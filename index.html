@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¡Estás Invitado!</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- Al hacer clic/toque, se activa o desactiva la clase 'open' -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-inner">
+            
+            <!-- PORTADA DE LA INVITACIÓN -->
+            <div class="card-front">
+                <div class="party-icon">🥃</div>
+                <h1>¡ESTÁS<br>INVITADO!</h1>
+                <p>Mi Cumpleaños 🎂</p>
+                <span class="hint">Toca para abrir 👆✨</span>
+            </div>
+            
+            <!-- DETALLES DE LA FIESTA (Interior) -->
+            <!-- stopPropagation evita que la tarjeta se cierre al tocar los botones -->
+            <div class="card-back" onclick="event.stopPropagation()">
+                <h2>¡A celebrar! 🍻</h2>
+                <p class="intro">Te espero para compartir un buen rato y pasar un gran día.</p>
+                
+                <div class="details">
+                    <p>📅 <strong>Fecha:</strong> Sábado, 16 de Mayo</p>
+                    <p>⏰ <strong>Hora:</strong> 1:00 PM</p>
+                    <p>📍 <strong>Lugar:</strong> <a href="https://maps.app.goo.gl/XtPE38SeCb7ZycZ76" target="_blank" class="map-link">Ver mapa aquí 🗺️</a></p>
+                </div>
+
+                <!-- Botón de Google Maps -->
+                <a href="https://maps.app.goo.gl/XtPE38SeCb7ZycZ76" 
+                   target="_blank" 
+                   class="btn-maps">
+                   Cómo llegar (Google Maps) 📍
+                </a>
+                
+                <span class="tap-close-hint" onclick="closeCardFromInside(event)">Volver a la portada ↩️</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pequeño script para el comportamiento táctil -->
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('open');
+        }
+
+        function closeCardFromInside(event) {
+            event.stopPropagation(); // Evita conflictos de clics
+            document.querySelector('.card').classList.remove('open');
+        }
+    </script>
+</body>
+</html>
